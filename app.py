@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 st.title("🏍️ MOVETONI")
-st.markdown("### Calculadora de precios para motosharing")
+st.markdown("### Calculadora de precios para MOVETONI")
 
 st.markdown("Introduce origen y destino para obtener el precio estimado del trayecto.")
 
