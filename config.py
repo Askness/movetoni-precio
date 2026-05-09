@@ -13,8 +13,6 @@ GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY", "")
 # 天气使用 Open-Meteo（免费无需 Key），OPENWEATHER_API_KEY 已废弃
 
 # === 基础定价参数 ===
-# B: 起步价 (€)
-BASE_FARE = float(os.getenv("BASE_FARE", "2.5"))
 # α: 每公里成本 (€/km)
 ALPHA = float(os.getenv("ALPHA", "0.15"))
 # β: 每分钟成本 (€/min)
