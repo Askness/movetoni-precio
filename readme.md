@@ -8,17 +8,16 @@ MOVETONI 是一个基于摩托车的城市出行服务平台。本系统用于�
 
 ### 1.1 基础价格模型（静态）
 
-P_base = B + α * d + β * t
+P_base = α * d + β * t
 
 参数说明：
-- B：起步价 (€)
 - d：距离（km）
 - t：时间（min）
 - α：每公里成本（电费）（可手动设置）
 - β：每分钟成本（司机成本）（可手动设置）
 
 说明：
-α 和 β 不固定，由运营策略或后期数据分析动态调整。
+α 和 β 不固定，由运营策略或后期数据分析动态调整。无固定起步价，最低价格由 P_final 的兜底条件保证。
 
 ---
 
@@ -176,7 +175,7 @@ def calculate_price(origin, destination, datetime):
     D = get_day_factor(datetime)
     E = get_event_factor()
 
-    base_price = B + alpha * distance + beta * duration
+    base_price = alpha * distance + beta * duration
     
     surge = 1 + gamma1*H + gamma2*W + gamma3*D + gamma4*E
 
