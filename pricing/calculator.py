@@ -1,6 +1,6 @@
 """
 定价计算核心逻辑
-P_base = α*d + β*t
+P_base = B + α*d + β*t
 S = 1 + γ1*H + γ2*W + γ3*D + γ4*E
 P_final = max(P_base * S, 3)
 """
@@ -41,7 +41,8 @@ def calculate_price(
     E = get_event_factor(event_level)
 
     base_price = (
-        config.ALPHA * distance_km
+        config.BASE_FARE
+        + config.ALPHA * distance_km
         + config.BETA * duration_min
     )
 
