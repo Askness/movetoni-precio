@@ -5,6 +5,7 @@ Ejecutar: streamlit run app.py
 """
 
 import os
+import urllib.parse
 
 import streamlit as st
 
@@ -37,6 +38,19 @@ with col1:
 
 with col2:
     destination = st.text_input("Destino", placeholder="Ej: Madrid Barajas")
+
+if origin and destination and config.GOOGLE_MAPS_API_KEY:
+    origin_enc = urllib.parse.quote(origin)
+    dest_enc = urllib.parse.quote(destination)
+    map_url = (
+        f"https://www.google.com/maps/embed/v1/directions"
+        f"?key={config.GOOGLE_MAPS_API_KEY}"
+        f"&origin={origin_enc}"
+        f"&destination={dest_enc}"
+        f"&mode=driving"
+        f"&language=es"
+    )
+    st.components.v1.iframe(map_url, height=400)
 
 event_level = st.selectbox(
     "Evento especial",
